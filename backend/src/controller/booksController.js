@@ -25,7 +25,9 @@ const getBookById = (req, res) => {
 
 const createBook = (req, res) => {
   const { values } = req.body;
-  const q = "INSERT INTO books (title, author, price, in_stock, image) VALUES (?)";
+  console.log(values);
+  const q =
+    "INSERT INTO books (title, author, price, in_stock, image) VALUES (?)";
 
   db.query(q, [values], (err, data) => {
     if (err) {
@@ -39,7 +41,8 @@ const createBook = (req, res) => {
 const updateBook = (req, res) => {
   const { id } = req.params;
   const { values } = req.body;
-  const q = "UPDATE books SET title=?, author=?, price=?, in_stock=?, image=? WHERE book_id=?";
+  const q =
+    "UPDATE books SET title=?, author=?, price=?, in_stock=?, image=? WHERE book_id=?";
 
   db.query(q, [...values, id], (err, data) => {
     if (err) {
