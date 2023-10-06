@@ -68,7 +68,8 @@ const partialUpdateBook = (req, res) => {
 };
 
 const deleteBook = (req, res) => {
-  const { id } = req.params;
+  const { id } = req.body;
+  console.log(id);
   const q = "DELETE FROM books WHERE book_id=?";
 
   db.query(q, [id], (err, data) => {
